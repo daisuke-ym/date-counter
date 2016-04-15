@@ -1,14 +1,15 @@
-//ARDUINO UNO
-//AE-7SEG-BOARD * 2
-//SCK D13
-//LATCH D10
-//SDI D11
+/*
+ * $Id$
+ * 
+ * あと何日タイマー
+ */
 
 #include<SPI.h>
-int sck = 13;
-int latch = 10;
-int sdi = 11;
-int scroll_speed = 100;
+//int SCK = 13; // 標準の SCK ピンを使うので定義しなくて良い
+int LATCH = 10;
+int SDI = 11;
+
+// 7セグのフォントデータ
 const byte digits[] = {
   0b11111100, // 0
   0b01100000, // 1
@@ -22,20 +23,22 @@ const byte digits[] = {
   0b11110110, // 9
 };
 
+// 操作スイッチ
 const int SW1 = 4; // UP
 const int SW2 = 5; // DOWN
 const int SW3 = 6; // OK
 const int SW4 = 7; // CANCEL
 
+// カウンタの値（7セグの表示値）
 int count = 25;
 
 // ----------------------------------------------------------------------
 void setup() {
   Serial.begin(9600);
   
-  pinMode(latch, OUTPUT);
-  pinMode(sck, OUTPUT);
-  pinMode(sdi, OUTPUT);
+  pinMode(LATCH, OUTPUT);
+  pinMode(SCK, OUTPUT);
+  pinMode(SDI, OUTPUT);
   SPI.begin();
   SPI.setBitOrder(LSBFIRST);
   SPI.setDataMode(0);
@@ -112,7 +115,7 @@ void disp7seg(int value) {
   Serial.print("dig1: ");
   Serial.println(dig1);
   
-  digitalWrite(latch, LOW);
+  digitalWrite(LATCH, LOW);
   if (dig3 == 0) {
     SPI.transfer(0x0);
   } else {
@@ -124,6 +127,6 @@ void disp7seg(int value) {
     SPI.transfer(digits[dig2]);
   }
   SPI.transfer(digits[dig1]);
-  digitalWrite(latch, HIGH);
+  digitalWrite(LATCH, HIGH);
 }
 
