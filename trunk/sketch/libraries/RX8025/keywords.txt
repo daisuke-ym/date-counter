@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For RX-8025NB
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RX8025	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin               KEYWORD2
+setClock            KEYWORD2
+setAlarmW           KEYWORD2
+setAlarmD           KEYWORD2
+enableAlarmW        KEYWORD2
+enableAlarmD        KEYWORD2
+disableAlarmW       KEYWORD2
+disableAlarmD       KEYWORD2
+clearAlarmW         KEYWORD2
+clearAlarmD         KEYWORD2
+getClock            KEYWORD2
+getClockStr         KEYWORD2
+
+######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
