@@ -55,13 +55,13 @@ void loop()
   years = Wire.read();
 
   sprintf(strDate, "%02d/%02d/%02d", 
-    (years >> 4) + (years & 0xf),
-    (months >> 4) + (months & 0xf),
-    (days >> 4) + (days & 0xf));
+    (years >> 4) * 10 + (years & 0xf),
+    (months >> 4) * 10 + (months & 0xf),
+    (days >> 4) * 10 + (days & 0xf));
   sprintf(strTime, "%02d:%02d:%02d",
-    (hours >> 4) + (hours & 0xf),
-    (minutes >> 4) + (minutes & 0xf),
-    (seconds >> 4) + (seconds & 0xf));  
+    (hours >> 4) * 10 + (hours & 0xf),
+    (minutes >> 4) * 10 + (minutes & 0xf),
+    (seconds >> 4) * 10 + (seconds & 0xf));  
   lcd.setCursor(0, 0);
   lcd.print(strDate);
   lcd.setCursor(0, 1);
